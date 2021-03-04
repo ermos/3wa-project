@@ -1,6 +1,6 @@
 <?php
 
 // App Informations
-define("APP_NAME", "3W Academy");
-define("APP_DESCRIPTION", "Plateforme d'éducation");
-define("APP_KEYWORD", "3wa,3w academy");
+define("APP_NAME", "Hotelio");
+define("APP_DESCRIPTION", "Réservation de chambre");
+define("APP_KEYWORD", "hotelio, reservation, chambre");

@@ -1,0 +1,34 @@
+.btn-group {
+    display: flex;
+    column-gap: var(--spacing-medium);
+}
+
+.btn-group .btn {
+    flex: 1;
+}
+
+.btn-group a {
+    flex: 1;
+    display: inline-block;
+}
+
+.btn {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: var(--spacing-little);
+    margin-top: var(--spacing-medium);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn--default {
+    color: var(--sub-color);
+    background-color: var(--main-color-dark-2);
+}
+
+.btn--neutral {
+    color: #fff;
+    background-color: var(--neutral-color);
+}

@@ -1,3 +1,55 @@
+@import "_scss/reset.css";
+@import "_scss/default.css";
+@import "_scss/btn.css";
+@import "_scss/input.css";
+@import "_scss/signin.css";
+/* Default Variables */
+:root {
+  /* Configuration */
+  --interface-size: 1200px;
+  --spacing-little: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  /* General */
+  --background: #fff;
+  /* Main Color */
+  --main-color: #fff;
+  --main-color-dark-1: #fcfdff;
+  --main-color-dark-2: #e6e6e6;
+  --main-color-dark-3: #9b9b9b;
+  /* Sub Color */
+  --sub-color: #424247;
+  --sub-color-light-1: #444444;
+  --sub-color-light-2: #c1c1c1;
+  /* Third Color */
+  --neutral-color: #ef4036;
+  --neutral-color-light-1: #e0564e;
+  --neutral-color-dark-1: #bc4742;
+  /* Opacity */
+  --opacity-1: rgba(0, 0, 0, .01);
+  --opacity-2: rgba(0, 0, 0, .02);
+  --opacity-3: rgba(0, 0, 0, .04);
+  --opacity-4: rgba(0, 0, 0, .07);
+  --opacity-5: rgba(0, 0, 0, .1);
+  --opacity-6: rgba(0, 0, 0, .2);
+  --opacity-7: rgba(0, 0, 0, .3);
+  --opacity-8: rgba(0, 0, 0, .4);
+}
 
+@media screen and (max-width: 64em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+@media screen and (max-width: 55em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media screen and (max-width: 30em) {
+  html {
+    font-size: 40%;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -16,7 +16,7 @@ class Home extends Controller {
     }
 
     private function signIn() {
-        \Response::Show("error", []);
+        \Response::Show("se-connecter", []);
     }
 
     private function board() {

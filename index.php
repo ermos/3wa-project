@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+require_once "config/config.php";
 require_once "core/autoload.php";
 require_once "core/controller.php";
 require_once "core/response.php";

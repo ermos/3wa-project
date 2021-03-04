@@ -1,0 +1,56 @@
+#signin {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.signin__left {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin__right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.signin__logo {
+    font-weight: bold;
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 3rem #000;
+}
+
+.signin__logo h1 {
+    font-size: 14rem;
+    display: block;
+}
+
+.signin__content {
+    line-height: 1;
+}
+
+.signin__title {
+    color: #000;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.signin__desc {
+
+}
+
+.signin__form {
+    margin-top: var(--spacing-medium);
+}
