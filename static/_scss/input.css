@@ -7,3 +7,8 @@
     margin-top: var(--spacing-medium);
     border: 2px solid var(--main-color-dark-2);
 }
+
+.input:not([disabled]):focus {
+    transition: border .4s ease-in;
+    border: 2px solid var(--neutral-color);
+}

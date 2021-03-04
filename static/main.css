@@ -23,8 +23,8 @@
   --sub-color-light-2: #c1c1c1;
   /* Third Color */
   --neutral-color: #ef4036;
-  --neutral-color-light-1: #e0564e;
-  --neutral-color-dark-1: #bc4742;
+  --neutral-color-light-1: #ff4b41;
+  --neutral-color-dark-1: #d7342b;
   /* Opacity */
   --opacity-1: rgba(0, 0, 0, .01);
   --opacity-2: rgba(0, 0, 0, .02);

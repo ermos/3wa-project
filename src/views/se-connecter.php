@@ -14,7 +14,7 @@
                 <div class="signin__content">
                     <p class="signin__desc">Interface de réservation de chambre</p>
                     <h2 class="signin__title">Connectez-vous à votre compte</h2>
-                    <form class="signin__form" method="post" action="/?p=home">
+                    <form class="signin__form" method="post" action="">
                         <label>
                             <input
                                     class="input"

@@ -32,3 +32,13 @@
     color: #fff;
     background-color: var(--neutral-color);
 }
+
+.btn--neutral:hover {
+    transition: background-color .4s ease-in;
+    background-color: var(--neutral-color-light-1);
+}
+
+.btn--neutral:active {
+    transition: background-color .1s ease-in;
+    background-color: var(--neutral-color-dark-1);
+}
