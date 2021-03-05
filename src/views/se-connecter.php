@@ -32,6 +32,11 @@
                                     name="password"
                             />
                         </label>
+                        <?php if(!empty($data["error"])) { ?>
+                            <p class="popup popup--warning">
+                                <?= $data["error"] ?>
+                            </p>
+                        <?php } ?>
                         <div class="btn-group">
                             <a href="#"><button class="btn btn--default">Mot de passe oublié ?</button></a>
                             <button class="btn btn--neutral" type="submit">Se connecter</button>

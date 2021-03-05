@@ -1,0 +1,29 @@
+.popup {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: var(--spacing-little);
+    margin-top: var(--spacing-medium);
+    animation: popup--bounce ease-in-out .25s 1 normal forwards;
+    text-align: center;
+}
+
+.popup--warning {
+    font-weight: bold;
+    color: var(--neutral-color);
+}
+
+@keyframes popup--bounce {
+    0% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.025);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

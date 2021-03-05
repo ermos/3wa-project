@@ -16,11 +16,41 @@ class Home extends Controller {
     }
 
     private function signIn() {
-        \Response::Show("se-connecter", []);
+        $error = "";
+
+        if (!empty($_POST["username"]) || !empty($_POST["password"])) {
+            $error = $this->checkLogin();
+            if ($error === "") {
+                $_SESSION["user"] = "admin";
+                header("Location: /");
+                return;
+            }
+        }
+
+        \Response::Show("se-connecter", [
+            'error' => $error
+        ]);
+    }
+
+    private function checkLogin() {
+        if (empty($_POST["username"])) {
+            return "Nom d'utilisateur requis !";
+        }
+
+        if (empty($_POST["password"])) {
+            return "Mot de passe requis !";
+        }
+
+        if ($_POST["username"] !== "ksmiti" || $_POST["password"] !== "ksmiti") {
+            return "Le nom d'utilisateur ou le mot de passe est incorrect..";
+        }
+
+        return "";
     }
 
     private function board() {
-
+        \Response::Show("board", [
+        ]);
     }
 
 }

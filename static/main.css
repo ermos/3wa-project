@@ -2,11 +2,13 @@
 @import "_scss/default.css";
 @import "_scss/btn.css";
 @import "_scss/input.css";
+@import "_scss/popup.css";
 @import "_scss/signin.css";
+@import "_scss/app.css";
 /* Default Variables */
 :root {
   /* Configuration */
-  --interface-size: 1200px;
+  --interface-size: 1280px;
   --spacing-little: 10px;
   --spacing-medium: 20px;
   --spacing-large: 30px;
