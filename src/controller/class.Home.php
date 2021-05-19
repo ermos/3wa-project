@@ -27,7 +27,7 @@ class Home extends Controller {
 	}
 
 	private function room_list() {
-		// TODO
+
 	}
 
 	public function run()

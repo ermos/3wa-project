@@ -6,4 +6,33 @@
     max-width: var(--interface-size);
     margin: auto;
     padding: var(--spacing-little);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    flex: 1;
+    box-sizing: border-box;
+    padding: var(--spacing-little);
+}
+
+.aside {
+    box-sizing: border-box;
+    max-width: 400px;
+    width: 100%;
+    padding: var(--spacing-little);
+}
+
+.block {
+    box-sizing: border-box;
+    padding: var(--spacing-little);
+    background-color: var(--main-color);
+}
+
+.block > :first-child {
+    margin-top: 0 !important;
+}
+.block > :last-child {
+    margin-bottom: 0 !important;
 }

@@ -10,6 +10,8 @@
     text-transform: uppercase;
     color: var(--sub-color);
     font-size: 3rem;
+    padding: 0 var(--spacing-little);
+    box-sizing: border-box;
 }
 
 .header__logo span {
