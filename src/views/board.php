@@ -21,25 +21,26 @@
             <p>Je recherche une</p>
             <select id="search-room-type" class="search__select">
                 <option value="" disabled selected>...</option>
-                <option value="1">Chambre 1L</option>
-                <option value="1">Chambre 2L</option>
-                <option value="1">Chambre 3L</option>
-                <option value="1">Chambre 4L</option>
+                <?php foreach ($data["room_type"] as $rt) { ?>
+                <option value="<?= $rt["id"] ?>"><?= $rt["name"] ?></option>
+                <?php } ?>
             </select>
             <select id="search-available" class="search__select">
                 <option value="" disabled selected>...</option>
                 <option value="1">Disponible</option>
-                <option value="1">Occupé</option>
+                <option value="0">Occupé</option>
             </select>
             <p>entre</p>
             <input id="search-date-min" class="search__date" type="date" min="<?= date('Y-m-d'); ?>">
             <p>et</p>
             <input id="search-date-max" class="search__date" type="date" min="<?= date('Y-m-d'); ?>">
-            <button id="search-submit" class="search__btn btn btn--neutral">Afficher</button>
+            <button id="search-submit" class="search__btn">Afficher</button>
         </div>
     </main>
     <aside class="aside">
-        <div class="block">Hey</div>
+        <a href="?p=create-room" class="block block--no-bg board__add-room">
+            <button class="btn btn--neutral add-room__btn">Ajouter une nouvelle chambre</button>
+        </a>
     </aside>
 </div>
 <script defer rel="prefetch" type="application/javascript" src="/static/js/board.js"></script>

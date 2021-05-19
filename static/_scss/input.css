@@ -12,3 +12,19 @@
     transition: border .4s ease-in;
     border: 2px solid var(--neutral-color);
 }
+
+.select {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 5px;
+    padding: var(--spacing-little);
+    margin-top: var(--spacing-medium);
+    border: 2px solid var(--main-color-dark-2);
+    background-color: #fff;
+}
+
+.select:not([disabled]):focus {
+    transition: border .4s ease-in;
+    border: 2px solid var(--neutral-color);
+}

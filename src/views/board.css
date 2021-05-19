@@ -39,6 +39,7 @@
 .board__search {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .board__search button {
@@ -50,11 +51,38 @@
     border-bottom: 1px solid var(--sub-color);
     background-color: #fff;
     padding: 0;
-    margin: 0 5px;
-    color: var(--neutral-color);
+    margin: 5px;
+    color: var(--sub-color-light-1);
 }
 
 .search__btn {
     flex: 1;
     margin: 0;
+    background-color: var(--sub-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search__btn:hover {
+    transition: all 0.4s ease-in;
+    background-color: var(--sub-color-light-1);
+}
+
+.search__btn:active {
+
+    transition: initial;
+    background-color: var(--sub-color);
+}
+
+.board__add-room {
+    display: block;
+    padding: 0;
+}
+
+.add-room__btn {
+    border-radius: 0;
+    height: 45px;
 }

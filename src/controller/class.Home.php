@@ -81,6 +81,7 @@ class Home extends Controller {
 
     private function board() {
         Response::Show("board", [
+        	"room_type" => DB::Get()->QueryRows("SELECT * FROM room_type"),
         	"cards" => array(
         		[ "title" => "Chambres 1L disponible", "free" => 123, "count" => 210 ],
 				[ "title" => "Chambres 2L disponible", "free" => 9, "count" => 27 ],

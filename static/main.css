@@ -6,11 +6,13 @@
 @import "_scss/input.css";
 @import "_scss/popup.css";
 @import "_scss/app.css";
+@import "_scss/toast.css";
 /* UI */
 @import "../src/ui/header.css";
 /* Views */
 @import "../src/views/se-connecter.css";
 @import "../src/views/board.css";
+@import "../src/views/create-room.css";
 /* Default Variables */
 :root {
   /* Configuration */

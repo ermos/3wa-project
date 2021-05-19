@@ -1,0 +1,45 @@
+.toast {
+    position: fixed;
+    right: var(--spacing-medium);
+    top: var(--spacing-medium);
+    box-sizing: border-box;
+    padding: var(--spacing-medium) var(--spacing-large);
+    color: #fff;
+    z-index: 9999;
+    opacity: 0;
+    animation: toast--appear 1s forwards;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.toast:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes toast--appear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toast--red {
+    background-color: var(--red);
+}
+
+.toast--orange {
+    background-color: var(--yellow);
+}
+
+.toast--green {
+    background-color: var(--green);
+}

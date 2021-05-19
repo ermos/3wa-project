@@ -16,11 +16,14 @@ Plugins::init();
 
 $api = false;
 
+setcookie("toast", "", 1);
+
 if (isset($_GET["api"])) {
 	$api = true;
 	$page = ucfirst($_GET["api"]);
 } else {
 	$page = isset($_GET["p"]) ? ucfirst($_GET["p"]) : "Home";
+	$page = ucfirst(lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $page)))));
 }
 
 $class_name = "controller\\$page";

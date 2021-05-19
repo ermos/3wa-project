@@ -11,6 +11,10 @@
     flex-wrap: wrap;
 }
 
+.content--small {
+    max-width: calc(var(--interface-size) / 2);
+}
+
 .main {
     flex: 1;
     box-sizing: border-box;
@@ -30,9 +34,19 @@
     background-color: var(--main-color);
 }
 
+.block--no-bg {
+    background-color: initial;
+}
+
 .block > :first-child {
     margin-top: 0 !important;
 }
 .block > :last-child {
     margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 1280px) {
+    .aside {
+        max-width: initial;
+    }
 }

@@ -1,3 +1,4 @@
+<?php toast(); ?>
 <header class="header">
 	<div class="header__content">
 		<a href="/"><h1 class="header__logo"><?= APP_NAME ?><span>.</span></h1></a>
