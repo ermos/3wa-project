@@ -69,14 +69,14 @@ class Home extends Controller {
         }
 
         $res = DB::Get()->Query("SELECT password FROM user WHERE login = ?", $_POST["username"]);
-        var_dump($res["password"]);
-        die();
 
-        if ($_POST["username"] !== "ksmiti" || $_POST["password"] !== "ksmiti") {
-            return "Le nom d'utilisateur ou le mot de passe est incorrect..";
-        }
+        if ($res !== false) {
+        	if (password_verify($_POST["password"], $res["password"])) {
+        		return "";
+			}
+		}
 
-        return "";
+		return "Le nom d'utilisateur ou le mot de passe est incorrect..";
     }
 
     private function board() {
