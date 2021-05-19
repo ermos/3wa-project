@@ -11,7 +11,23 @@ class Home extends Controller {
 			\Response::API(403, [ "message" => "only get request is allowed on this object" ]);
 			return;
 		}
-		\Response::API(200, [ "message" => $_SERVER['REQUEST_METHOD'] ]);
+
+		if (!isset($_GET["method"])) {
+			\Response::API(403, [ "message" => "method's query is required" ]);
+			return;
+		}
+
+		switch (strtolower($_GET["method"])) {
+			case "room_list":
+				$this->room_list();
+				break;
+			default:
+				\Response::API(403, [ "message" => "method not found" ]);
+		}
+	}
+
+	private function room_list() {
+		// TODO
 	}
 
 	public function run()
