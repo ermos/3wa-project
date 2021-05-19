@@ -50,6 +50,12 @@ class Home extends Controller {
 
     private function board() {
         \Response::Show("board", [
+        	"cards" => array(
+        		[ "title" => "Chambres 1L disponible", "free" => 123, "count" => 210 ],
+				[ "title" => "Chambres 2L disponible", "free" => 9, "count" => 27 ],
+				[ "title" => "Chambres 3L dispoinble", "free" => 2, "count" => 16 ],
+				[ "title" => "Chambres 4L dispoinble", "free" => 4, "count" => 10 ],
+			)
         ]);
     }
 

@@ -1,0 +1,36 @@
+.board__cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    box-sizing: border-box;
+    margin: var(--spacing-little);
+    padding: var(--spacing-medium) var(--spacing-large);
+    white-space: nowrap;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+}
+
+.card--red {
+    background-color: var(--red);
+}
+
+.card--orange {
+    background-color: var(--yellow);
+}
+
+.card--green {
+    background-color: var(--green);
+}
+
+.card__value {
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.card__value span {
+    font-size: 2rem;
+}

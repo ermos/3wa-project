@@ -2,56 +2,8 @@
     background-color: var(--main-color-dark-2);
 }
 
-.header {
-    width: 100%;
-    padding: var(--spacing-medium);
-    background-color: var(--main-color);
-    box-sizing: border-box;
-}
-
-.header__logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--sub-color);
-    font-size: 3rem;
-}
-
-.header__logo span {
-    color: var(--neutral-color);
-}
-
-.header__content {
+.content {
     max-width: var(--interface-size);
     margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header__nav {
-    padding: 0 var(--spacing-little);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.header__nav a {
-    position: relative;
-    display: block;
     padding: var(--spacing-little);
-    cursor: pointer;
-}
-
-.header__nav a:hover {
-    transition: color .4s ease-in;
-    color: var(--neutral-color);
-}
-
-.header__nav a.active {
-    color: #fff;
-    background-color: var(--neutral-color);
-}
-
-.header__nav a.active:hover {
-    color: #fff;
 }

@@ -1,10 +1,16 @@
+/* Init */
 @import "_scss/reset.css";
 @import "_scss/default.css";
+/* CSS Components */
 @import "_scss/btn.css";
 @import "_scss/input.css";
 @import "_scss/popup.css";
-@import "_scss/signin.css";
 @import "_scss/app.css";
+/* UI */
+@import "../src/ui/header.css";
+/* Views */
+@import "../src/views/se-connecter.css";
+@import "../src/views/board.css";
 /* Default Variables */
 :root {
   /* Configuration */
@@ -36,6 +42,10 @@
   --opacity-6: rgba(0, 0, 0, .2);
   --opacity-7: rgba(0, 0, 0, .3);
   --opacity-8: rgba(0, 0, 0, .4);
+  /* Color */
+  --green: #34D399;
+  --red: #ef4036;
+  --yellow: #FBBF24;
 }
 
 @media screen and (max-width: 64em) {
