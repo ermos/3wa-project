@@ -1,4 +1,5 @@
 <?php
+define("DEV_MODE", true);
 
 // App Informations
 define("APP_NAME", "Hotelio");

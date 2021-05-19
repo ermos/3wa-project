@@ -1,11 +1,12 @@
 <?php
 session_start();
-error_reporting(E_ALL);
 require_once "config/config.php";
-require_once "core/plugins.php";
-require_once "core/controller.php";
-require_once "core/response.php";
-require_once "core/head.php";
+
+if (DEV_MODE) {
+	error_reporting(E_ALL);
+}
+
+require_once "core/library/library.Autoload.php";
 
 $api = false;
 
