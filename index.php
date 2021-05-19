@@ -1,4 +1,7 @@
 <?php
+
+use core\Plugins;
+
 session_start();
 require_once "config/config.php";
 
@@ -7,6 +10,9 @@ if (DEV_MODE) {
 }
 
 require_once "core/library/library.Autoload.php";
+require_once "config/db.php";
+
+Plugins::init();
 
 $api = false;
 

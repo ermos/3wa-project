@@ -1,5 +1,5 @@
 <?php
-namespace config;
+namespace core;
 
 abstract class Controller {
 

@@ -1,8 +1,9 @@
 <?php
+namespace core;
 
 class Plugins {
 
-	public function __construct()
+	public static function init()
 	{
 		foreach (glob("src/plugins/*.php") as $filename)
 		{

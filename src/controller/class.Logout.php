@@ -1,7 +1,8 @@
 <?php
 namespace controller;
 
-use config\Controller;
+use core\Controller;
+use core\Response;
 
 class Logout extends Controller {
 

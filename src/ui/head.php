@@ -1,3 +1,8 @@
+<?php
+
+use core\Head;
+
+?>
 <head>
     <meta charset="UTF-8">
     <title><?= Head::getTitle() ?></title>

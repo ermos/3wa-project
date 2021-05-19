@@ -1,19 +1,20 @@
 <?php
 namespace controller;
 
-use config\Controller;
+use core\Controller;
+use core\Response;
 
 class Home extends Controller {
 
 	public function api()
 	{
 		if ($_SERVER['REQUEST_METHOD'] !== "GET") {
-			\Response::API(403, [ "message" => "only get request is allowed on this object" ]);
+			Response::API(403, [ "message" => "only get request is allowed on this object" ]);
 			return;
 		}
 
 		if (!isset($_GET["method"])) {
-			\Response::API(403, [ "message" => "method's query is required" ]);
+			Response::API(403, [ "message" => "method's query is required" ]);
 			return;
 		}
 
@@ -22,7 +23,7 @@ class Home extends Controller {
 				$this->room_list();
 				break;
 			default:
-				\Response::API(403, [ "message" => "method not found" ]);
+				Response::API(403, [ "message" => "method not found" ]);
 		}
 	}
 
@@ -52,7 +53,7 @@ class Home extends Controller {
             }
         }
 
-        \Response::Show("se-connecter", [
+        Response::Show("se-connecter", [
             'error' => $error
         ]);
     }
@@ -74,7 +75,7 @@ class Home extends Controller {
     }
 
     private function board() {
-        \Response::Show("board", [
+        Response::Show("board", [
         	"cards" => array(
         		[ "title" => "Chambres 1L disponible", "free" => 123, "count" => 210 ],
 				[ "title" => "Chambres 2L disponible", "free" => 9, "count" => 27 ],
