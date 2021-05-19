@@ -11,6 +11,10 @@ n'est donc pas utilisable dans un environnement de production.
 
 En cas de réutilisation, à votre charge de faire le nécessaire.
 
+Vous trouverez une démo ici : ...
+
+Le nom d'utilisateur est `admin` et le mot de passe est `admin`.
+
 ## Choix technique
 
 Je suis partie sur un modèle Vue/Controller simpliste,
