@@ -5,7 +5,16 @@ use config\Controller;
 
 class Home extends Controller {
 
-    public function run()
+	public function api()
+	{
+		if ($_SERVER['REQUEST_METHOD'] !== "GET") {
+			\Response::API(403, [ "message" => "only get request is allowed on this object" ]);
+			return;
+		}
+		\Response::API(200, [ "message" => $_SERVER['REQUEST_METHOD'] ]);
+	}
+
+	public function run()
     {
         if (empty($_SESSION["user"])) {
             $this->signIn();

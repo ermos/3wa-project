@@ -9,4 +9,9 @@ class Response {
         }
     }
 
+    static public function API($http_code = 200, $data = []) {
+    	http_response_code($http_code);
+    	echo json_encode($data);
+	}
+
 }
