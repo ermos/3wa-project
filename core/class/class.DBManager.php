@@ -8,7 +8,7 @@ class DBManager {
 
 	// Initialize Database.
 	public function __construct($db_name, $db_host, $db_user, $db_password) {
-		$this->_database = new PDO(sprintf("mysql:dbname=%s;host=%s", $db_name, $db_host), $db_user, $db_password);
+		$this->_database = new \PDO(sprintf("mysql:dbname=%s;host=%s", $db_name, $db_host), $db_user, $db_password);
 	}
 
 	// Begin method start a transaction.
@@ -31,7 +31,7 @@ class DBManager {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
-		return $stmt->fetch(PDO::FETCH_ASSOC);
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
 	}
 
 	// QueryRows fetch many rows and returns them in a associative array.
@@ -39,7 +39,7 @@ class DBManager {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
-		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public function Exec($query, ...$args) {

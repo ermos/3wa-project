@@ -21,7 +21,7 @@
                                     type="text"
                                     placeholder="Nom d'utilisateur"
                                     name="username"
-                                    value="<?= $_POST['username'] ? $_POST['username'] : '' ?>"
+                                    value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>"
                             />
                         </label>
                         <label>

@@ -2,6 +2,7 @@
 namespace controller;
 
 use core\Controller;
+use core\DB;
 use core\Response;
 
 class Home extends Controller {
@@ -66,6 +67,10 @@ class Home extends Controller {
         if (empty($_POST["password"])) {
             return "Mot de passe requis !";
         }
+
+        $res = DB::Get()->Query("SELECT password FROM user WHERE login = ?", $_POST["username"]);
+        var_dump($res["password"]);
+        die();
 
         if ($_POST["username"] !== "ksmiti" || $_POST["password"] !== "ksmiti") {
             return "Le nom d'utilisateur ou le mot de passe est incorrect..";
