@@ -29,7 +29,50 @@ class Home extends Controller {
 	}
 
 	private function room_list() {
+		$query = "
+		SELECT room.id, room.name as room_name, picture, room_type.name as `type`
+		FROM room
+		JOIN room_type ON room_type.id = room.room_type_id
+		";
 
+		$custom = [];
+		$value = [];
+
+		if (isset($_GET["available"])) {
+			$c = "";
+			$c .= $_GET["available"] == "1" ? "NOT EXISTS (" : "EXISTS (";
+			$c .= "
+			SELECT 1
+			FROM room_booking
+			WHERE room_booking.room_id = room.id
+			AND room_booking.date_min < ?
+			";
+			if (isset($_GET["date-min"])) {
+				$value[] = $_GET["date-min"];
+			} else {
+				$value[] = date("Y-m-d");
+			}
+			if (isset($_GET["date-max"])) {
+				$c .= "AND room_booking.date_max > ?";
+				$value[] = $_GET["date-max"];
+			}
+			$c .= ")";
+
+			$custom[] = $c;
+		}
+
+		if (isset($_GET["type"])) {
+			$c = "room.room_type_id = ?";
+			$value[] = $_GET["type"];
+			$custom[] = $c;
+		}
+
+		if (count($custom) > 0) {
+			$query .= "WHERE " . implode(" AND ", $custom);
+		}
+
+		$res = DB::Get()->QueryRows($query, ...$value);
+		Response::API(200, $res);
 	}
 
 	public function run()

@@ -28,7 +28,12 @@
     padding: var(--spacing-little);
 }
 
+.main > :first-child, .aside > :first-child {
+    margin-top: 0 !important;
+}
+
 .block {
+    margin-top: var(--spacing-medium);
     box-sizing: border-box;
     padding: var(--spacing-little);
     background-color: var(--main-color);

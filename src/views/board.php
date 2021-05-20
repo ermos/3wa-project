@@ -17,25 +17,41 @@
         <?php } ?>
     </div>
     <main class="main">
+        <?php $now = date('Y-m-d'); ?>
         <div class="block board__search">
             <p>Je recherche une</p>
             <select id="search-room-type" class="search__select">
-                <option value="" disabled selected>...</option>
+                <option value="" selected></option>
                 <?php foreach ($data["room_type"] as $rt) { ?>
                 <option value="<?= $rt["id"] ?>"><?= $rt["name"] ?></option>
                 <?php } ?>
             </select>
             <select id="search-available" class="search__select">
-                <option value="" disabled selected>...</option>
+                <option value="" selected></option>
                 <option value="1">Disponible</option>
                 <option value="0">Occupé</option>
             </select>
-            <p>entre</p>
-            <input id="search-date-min" class="search__date" type="date" min="<?= date('Y-m-d'); ?>">
-            <p>et</p>
-            <input id="search-date-max" class="search__date" type="date" min="<?= date('Y-m-d'); ?>">
+            <div id="search-date" class="search__hide">
+                <p>entre</p>
+                <input
+                        id="search-date-min"
+                        class="search__date"
+                        type="date"
+                        min="<?= $now ?>"
+                        value="<?= $now ?>"
+                >
+                <p>et</p>
+                <input
+                        id="search-date-max"
+                        class="search__date"
+                        type="date"
+                        min="<?= $now ?>"
+                        value="<?= $now ?>"
+                >
+            </div>
             <button id="search-submit" class="search__btn">Afficher</button>
         </div>
+        <div id="room-list"></div>
     </main>
     <aside class="aside">
         <a href="?p=create-room" class="block block--no-bg board__add-room">
