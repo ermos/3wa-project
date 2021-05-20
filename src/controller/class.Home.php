@@ -125,13 +125,28 @@ class Home extends Controller {
     private function board() {
         Response::Show("board", [
         	"room_type" => DB::Get()->QueryRows("SELECT * FROM room_type"),
-        	"cards" => array(
-        		[ "title" => "Chambres 1L disponible", "free" => 123, "count" => 210 ],
-				[ "title" => "Chambres 2L disponible", "free" => 9, "count" => 27 ],
-				[ "title" => "Chambres 3L dispoinble", "free" => 2, "count" => 16 ],
-				[ "title" => "Chambres 4L dispoinble", "free" => 4, "count" => 10 ],
-			)
+        	"cards" => $this->getCards(),
         ]);
     }
+
+    private function getCards() {
+		return DB::Get()->QueryRows("
+SELECT
+	room_type.name as title,
+	(SELECT count(*) FROM room WHERE room_type_id = room_type.id) as `count`,
+	(
+	SELECT count(*)
+	FROM room
+	WHERE room_type_id = room_type.id
+	AND NOT EXISTS (
+	SELECT 1
+	FROM room_booking
+	WHERE room_booking.room_id = room.id
+	AND room_booking.date_min < NOW()
+	AND room_booking.date_max > NOW()
+	)) as free
+FROM room_type
+			");
+	}
 
 }
