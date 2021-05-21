@@ -3,6 +3,7 @@
 use core\Plugins;
 
 session_start();
+require_once "core/const.php";
 require_once "config/config.php";
 
 if (DEV_MODE) {

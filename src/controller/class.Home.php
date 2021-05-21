@@ -4,6 +4,7 @@ namespace controller;
 use core\Controller;
 use core\DB;
 use core\Response;
+use model\User;
 
 class Home extends Controller {
 
@@ -123,6 +124,9 @@ class Home extends Controller {
     }
 
     private function board() {
+		$c = new User();
+		$c->Fetch(10, 0);
+		die();
         Response::Show("board", [
         	"room_type" => DB::Get()->QueryRows("SELECT * FROM room_type"),
         	"cards" => $this->getCards(),
