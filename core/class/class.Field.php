@@ -6,16 +6,44 @@ class Field {
 	private int $type;
 	private int $size = 255;
 	private bool $nullable = false;
-	private int|null $relation_type = null;
-	private string|null $relation = null;
-	private string|null $related = null;
+	public ?int $relation_type = null;
+	public ?object $relation = null;
+	private ?string $related = null;
+	private ?string $related_field = null;
+	private ?string $custom_name = null;
 
 	public function __construct(int $type)
 	{
 		$this->type = $type;
 	}
 
-	public function getType(): string {
+	public function getRelated(Model $model): ?Model {
+		$field = $this->related;
+		if ($field === null) {
+			return $model;
+		}
+		$related_field = $this->related_field;
+		$related_model = $model->$field->relation;
+		if ($related_model->$related_field->related !== null) {
+			return $related_model->$related_field->getRelated($related_model);
+		}
+		return $related_model;
+	}
+
+	public function getRelatedFieldName(Model $model): ?string {
+		$field = $this->related;
+		if ($field === null) {
+			return null;
+		}
+		$related_field = $this->related_field;
+		$related_model = $model->$field->relation;
+		if ($related_model->$related_field->related !== null) {
+			return $related_model->$related_field->getRelatedFieldName($related_model);
+		}
+		return $related_field;
+	}
+
+	public function getType(): int {
 		return $this->type;
 	}
 
@@ -24,8 +52,9 @@ class Field {
 		return $this;
 	}
 
-	public function setRelated(string $related): Field {
-		$this->related = $related;
+	public function setRelated(string $src, string $field): Field {
+		$this->related = $src;
+		$this->related_field = $field;
 		return $this;
 	}
 
@@ -34,21 +63,30 @@ class Field {
 		return $this;
 	}
 
-	public function manyToOne(string $field_name): Field {
+	public function setCustomName(string $name): Field {
+		$this->custom_name = $name;
+		return $this;
+	}
+
+	public function getCustomName(): ?string {
+		return $this->custom_name;
+	}
+
+	public function manyToOne(object $model): Field {
 		$this->relation_type = ORM_MANY_TO_ONE;
-		$this->relation = $field_name;
+		$this->relation = $model;
 		return $this;
 	}
 
-	public function oneToMany(string $field_name): Field {
+	public function oneToMany(object $model): Field {
 		$this->relation_type = ORM_ONE_TO_MANY;
-		$this->relation = $field_name;
+		$this->relation = $model;
 		return $this;
 	}
 
-	public function manyToMany(string $field_name): Field {
+	public function manyToMany(object $model): Field {
 		$this->relation_type = ORM_MANY_TO_MANY;
-		$this->relation = $field_name;
+		$this->relation = $model;
 		return $this;
 	}
 

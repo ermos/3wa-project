@@ -3,6 +3,7 @@ namespace model;
 
 use core\Model;
 use core\IntFieldDefinition;
+use core\RelatedFieldDefinition;
 use core\StringFieldDefinition;
 
 class Room extends Model {
@@ -15,7 +16,9 @@ class Room extends Model {
 		$this->id = IntFieldDefinition::Create(10);
 
 		$this->room_type_id = IntFieldDefinition::Create(10)
-			->manyToOne("room_type");
+			->manyToOne(new RoomType());
+
+		$this->room_type = RelatedFieldDefinition::Create("room_type_id", "name");
 
 		$this->name = StringFieldDefinition::Create();
 

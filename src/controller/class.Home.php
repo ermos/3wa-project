@@ -4,6 +4,8 @@ namespace controller;
 use core\Controller;
 use core\DB;
 use core\Response;
+use model\Room;
+use model\RoomBooking;
 use model\User;
 
 class Home extends Controller {
@@ -124,7 +126,7 @@ class Home extends Controller {
     }
 
     private function board() {
-		$c = new User();
+		$c = new RoomBooking();
 		$c->Fetch(10, 0);
 		die();
         Response::Show("board", [

@@ -14,7 +14,10 @@ abstract class Model {
 	}
 
 	public function Fetch(int $limit, int $offset): array|bool {
-		var_dump(array_keys(get_object_vars($this)));
+		new ORM($this, array(
+			["last_name", "=", "SMITI"]
+		), 1, 0);
+		die();
 		return true;
 	}
 
