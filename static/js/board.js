@@ -39,10 +39,10 @@ function constructRoomList(data) {
     let result = ""
     data.forEach((e) => {
         result += '<div class="block room-list__item">'
-        result +=   '<img class="room-list__picture" src="' + e.picture + '" alt="' + e.room_name + '" />'
+        result +=   '<img class="room-list__picture" src="' + e.picture + '" alt="' + e.name + '" />'
         result +=   '<div class="room-list__content">'
         result +=       '<div class="room-list__header">'
-        result +=           '<h3 class="room-list__title">' + e.room_name + '</h3>'
+        result +=           '<h3 class="room-list__title">' + e.name + '</h3>'
         result +=           '<p class="room-list__type">' + e.type + '</p>'
         result +=       '</div>'
         result +=       '<div class="btn-group">'

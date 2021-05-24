@@ -18,7 +18,7 @@ class Room extends Model {
 		$this->room_type_id = IntFieldDefinition::Create(10)
 			->manyToOne(new RoomType());
 
-		$this->room_type = RelatedFieldDefinition::Create("room_type_id", "name");
+		$this->type = RelatedFieldDefinition::Create("room_type_id", "name");
 
 		$this->name = StringFieldDefinition::Create();
 

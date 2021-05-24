@@ -3,6 +3,7 @@ namespace controller;
 
 use core\Controller;
 use core\DB;
+use core\ORM;
 use core\Response;
 use model\Room;
 use model\RoomBooking;
@@ -32,50 +33,31 @@ class Home extends Controller {
 	}
 
 	private function room_list() {
-		$query = "
-		SELECT room.id, room.name as room_name, picture, room_type.name as `type`
-		FROM room
-		JOIN room_type ON room_type.id = room.room_type_id
-		";
-
-		$custom = [];
-		$value = [];
-
+		$r = ORM::Prepare("Room");
 		if (isset($_GET["available"])) {
-			$c = "";
-			$c .= $_GET["available"] == "1" ? "NOT EXISTS (" : "EXISTS (";
-			$c .= "
-			SELECT 1
-			FROM room_booking
-			WHERE room_booking.room_id = room.id
-			AND room_booking.date_min < ?
-			";
-			if (isset($_GET["date-min"])) {
-				$value[] = $_GET["date-min"];
-			} else {
-				$value[] = date("Y-m-d");
-			}
+			$value = [];
+			$date_max = "";
+			$cond_type = $_GET["available"] == "1" ? "NOT EXISTS" : "EXISTS";
+
+			$value[] = isset($_GET["date-min"]) ? $_GET["date-min"] : date("Y-m-d");
+
 			if (isset($_GET["date-max"])) {
-				$c .= "AND room_booking.date_max > ?";
+				$date_max = "AND room_booking.date_max > ?";
 				$value[] = $_GET["date-max"];
 			}
-			$c .= ")";
 
-			$custom[] = $c;
+			$r->Get()->Where($cond_type . "(
+			SELECT 1 FROM room_booking
+			WHERE room_booking.room_id = room.id
+			AND room_booking.date_min < ?
+			" . $date_max . ")", ...$value);
 		}
 
 		if (isset($_GET["type"])) {
-			$c = "room.room_type_id = ?";
-			$value[] = $_GET["type"];
-			$custom[] = $c;
+			$r->Get()->Where("room.room_type_id = ?", $_GET["type"]);
 		}
 
-		if (count($custom) > 0) {
-			$query .= "WHERE " . implode(" AND ", $custom);
-		}
-
-		$res = DB::Get()->QueryRows($query, ...$value);
-		Response::API(200, $res);
+		Response::API(200, $r->Get()->QueryRows());
 	}
 
 	public function run()
@@ -126,11 +108,8 @@ class Home extends Controller {
     }
 
     private function board() {
-		$c = new RoomBooking();
-		$c->Fetch(10, 0);
-		die();
         Response::Show("board", [
-        	"room_type" => DB::Get()->QueryRows("SELECT * FROM room_type"),
+        	"room_type" => ORM::QueryRows("RoomType"),
         	"cards" => $this->getCards(),
         ]);
     }
