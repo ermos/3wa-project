@@ -6,6 +6,7 @@ class Field {
 	private int $type;
 	private int $size = 255;
 	private bool $nullable = false;
+	private bool $select = true;
 	public ?int $relation_type = null;
 	public ?object $relation = null;
 	private ?string $related = null;
@@ -17,6 +18,15 @@ class Field {
 	public function __construct(int $type)
 	{
 		$this->type = $type;
+	}
+
+	public function select(bool $select): Field {
+		$this->select = $select;
+		return $this;
+	}
+
+	public function isSelectable(): bool {
+		return $this->select;
 	}
 
 	public function setAlias(string $name, string $query): Field {

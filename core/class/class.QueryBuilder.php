@@ -89,12 +89,14 @@ class QueryBuilder {
 				default:
 			}
 
-			if ($field->getCustomName() !== null) {
-				$this->request_fields[] = sprintf("%s.%s as %s", $table, $field_name, $field->getCustomName());
-			} elseif ($field->getType() === ORM_RELATED) {
-				$this->request_fields[] = sprintf("%s.%s as %s", $table, $field_name, $name);
-			} else {
-				$this->request_fields[] = sprintf("%s.%s", $table, $field_name);
+			if ($field->isSelectable()) {
+				if ($field->getCustomName() !== null) {
+					$this->request_fields[] = sprintf("%s.%s as %s", $table, $field_name, $field->getCustomName());
+				} elseif ($field->getType() === ORM_RELATED) {
+					$this->request_fields[] = sprintf("%s.%s as %s", $table, $field_name, $name);
+				} else {
+					$this->request_fields[] = sprintf("%s.%s", $table, $field_name);
+				}
 			}
 
 			if ($field->relation_type === ORM_MANY_TO_ONE) {

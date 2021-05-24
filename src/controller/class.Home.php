@@ -2,7 +2,6 @@
 namespace controller;
 
 use core\Controller;
-use core\DB;
 use core\ORM;
 use core\Response;
 use model\User;
@@ -55,7 +54,12 @@ class Home extends Controller {
 			$r->Get()->Where("room.room_type_id = ?", $_GET["type"]);
 		}
 
-		Response::API(200, $r->Get()->QueryRows());
+		$result = $r->Get()->QueryRows();
+		foreach ($result as &$line) {
+			$line["booking"] = ORM::QueryRows("Booking", array(["room_id", "=", $line["id"]]));
+		}
+
+		Response::API(200, $result);
 	}
 
 	public function run()
