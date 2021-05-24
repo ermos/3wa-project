@@ -75,18 +75,20 @@ class QueryBuilder {
 
 	private function generateRequestFields() {
 		foreach ($this->fields as $name => $field) {
-			// Get real table name
-			if ($field->getType() === ORM_RELATED) {
-				$table = $field->getRelated($this->object)->table;
-			} else {
-				$table = $this->object->table;
+			$table = $this->object->table;
+			$field_name = $name;
+
+			switch ($field->getType()) {
+				case ORM_RELATED:
+					$table = $field->getRelated($this->object)->table;
+					$field_name = $field->getRelatedFieldName($this->object);
+					break;
+				case ORM_ALIAS:
+					$this->request_fields[] = sprintf("(%s) as %s", $field->getAliasQuery(), $field->getAliasName());
+					continue 2;
+				default:
 			}
-			// Generate Fields
-			if ($field->getType() === ORM_RELATED) {
-				$field_name = $field->getRelatedFieldName($this->object);
-			} else {
-				$field_name = $name;
-			}
+
 			if ($field->getCustomName() !== null) {
 				$this->request_fields[] = sprintf("%s.%s as %s", $table, $field_name, $field->getCustomName());
 			} elseif ($field->getType() === ORM_RELATED) {
@@ -94,7 +96,7 @@ class QueryBuilder {
 			} else {
 				$this->request_fields[] = sprintf("%s.%s", $table, $field_name);
 			}
-			// Generate Join
+
 			if ($field->relation_type === ORM_MANY_TO_ONE) {
 				$this->addRequestJoin($this->object->table, $name, $field->relation);
 			}

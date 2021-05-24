@@ -1,6 +1,7 @@
 <?php
 namespace model;
 
+use core\DB;
 use core\Model;
 use core\IntFieldDefinition;
 use core\StringFieldDefinition;
@@ -19,6 +20,26 @@ class User extends Model {
 		$this->email = StringFieldDefinition::Create();
 		$this->created_at = DateFieldDefinition::Create();
 		$this->updated_at = DateFieldDefinition::Create();
+	}
+
+	public static function checkLogin($username, $password) {
+		if (empty($username)) {
+			return "Nom d'utilisateur requis !";
+		}
+
+		if (empty($password)) {
+			return "Mot de passe requis !";
+		}
+
+		$res = DB::Get()->Query("SELECT password FROM user WHERE login = ?", $username);
+
+		if ($res !== false) {
+			if (password_verify($password, $res["password"])) {
+				return "";
+			}
+		}
+
+		return "Le nom d'utilisateur ou le mot de passe est incorrect..";
 	}
 
 }

@@ -11,10 +11,26 @@ class Field {
 	private ?string $related = null;
 	private ?string $related_field = null;
 	private ?string $custom_name = null;
+	private ?string $alias_name = null;
+	private ?string $alias_query = null;
 
 	public function __construct(int $type)
 	{
 		$this->type = $type;
+	}
+
+	public function setAlias(string $name, string $query): Field {
+		$this->alias_name = $name;
+		$this->alias_query = $query;
+		return $this;
+	}
+
+	public function getAliasName(): ?string {
+		return $this->alias_name;
+	}
+
+	public function getAliasQuery(): ?string {
+		return $this->alias_query;
 	}
 
 	public function getRelated(Model $model): ?Model {
