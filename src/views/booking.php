@@ -45,7 +45,7 @@
 <script type="application/javascript">
     const booking = JSON.parse('<?= str_replace("\\\"", "\"", addslashes(json_encode($data["room"]["booking"], JSON_HEX_TAG))) ?>')
 </script>
-<script defer rel="prefetch" type="application/javascript" src="/public/static/js/calendar.js"></script>
-<script defer rel="prefetch" type="application/javascript" src="/public/static/js/booking.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/static/js/calendar.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/static/js/booking.js"></script>
 </body>
 </html>

@@ -59,7 +59,7 @@
     </aside>
 </div>
 <?php include "../src/ui/footer.php" ?>
-<script defer rel="prefetch" type="application/javascript" src="/public/static/js/calendar.js"></script>
-<script defer rel="prefetch" type="application/javascript" src="/public/static/js/board.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/static/js/calendar.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/static/js/board.js"></script>
 </body>
 </html>
