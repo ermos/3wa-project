@@ -1,19 +1,21 @@
 /* Init */
-@import "_scss/reset.css";
-@import "_scss/default.css";
+@import "_scss/init/reset.css";
+@import "_scss/init/default.css";
 /* CSS Components */
-@import "_scss/btn.css";
-@import "_scss/input.css";
-@import "_scss/popup.css";
-@import "_scss/app.css";
-@import "_scss/toast.css";
+@import "_scss/components/btn.css";
+@import "_scss/components/input.css";
+@import "_scss/components/popup.css";
+@import "_scss/components/app.css";
+@import "_scss/components/toast.css";
+@import "_scss/components/calendar.css";
 /* UI */
-@import "../src/ui/header.css";
-@import "../src/ui/footer.css";
+@import "_scss/ui/header.css";
+@import "_scss/ui/footer.css";
 /* Views */
-@import "../src/views/se-connecter.css";
-@import "../src/views/board.css";
-@import "../src/views/create-room.css";
+@import "_scss/views/se-connecter.css";
+@import "_scss/views/board.css";
+@import "_scss/views/create-room.css";
+@import "_scss/views/booking.css";
 /* Default Variables */
 :root {
   /* Configuration */

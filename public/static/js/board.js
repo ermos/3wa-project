@@ -42,16 +42,7 @@ function handleChange() {
 function constructRoomList(data) {
     let result = ""
 
-    const afterDay = today()
-    afterDay.setDate(afterDay.getDate() + 32)
-
     data.forEach((e) => {
-        let notEmpty = {}
-        e.booking.forEach((b) => {
-            for (let d = new Date(b.date_min); d <= new Date(b.date_max); d.setDate(d.getDate() + 1)) {
-                notEmpty[d.getTime()] = true
-            }
-        })
         result += '<div class="block room-list__item">'
         result +=   '<img class="room-list__picture" src="' + e.picture + '" alt="' + e.name + '" />'
         result +=   '<div class="room-list__content">'
@@ -60,24 +51,13 @@ function constructRoomList(data) {
         result +=               '<h3 class="room-list__title">' + e.name + '</h3>'
         result +=               '<p class="room-list__type">' + e.type + '</p>'
         result +=           '</div>'
-        result +=           '<button class="btn btn--neutral room-list__btn" type="submit">Poser une réservation</button>'
+        result +=           '<a href="?p=booking&id=' + e.id + '">'
+        result +=               '<button class="btn btn--neutral room-list__btn" type="submit">Poser une réservation</button>'
+        result +=           '</a>'
         result +=       '</div>'
-        result +=       '<div class="room-list__calendar">'
-        for (let d = today(); d < afterDay; d.setDate(d.getDate() + 1)) {
-            result +=       '<div class="calendar__item' + (notEmpty[d.getTime()] === undefined ? ' calendar__item--booking' : '') + '">'
-            result +=           d.getDate().toString()
-            result +=       '</div>'
-        }
-        result +=               ''
-        result +=       '</div>'
+        result +=       calendar(e.booking)
         result +=   '</div>'
         result += '</div>'
     })
     roomList.innerHTML = result
-}
-
-function today() {
-    const d = new Date(new Date().toISOString().slice(0, 10))
-    d.setHours(0,0,0,0)
-    return d
 }

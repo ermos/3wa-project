@@ -4,9 +4,9 @@
  */
 ?>
 <html>
-<?php include "src/ui/head.php" ?>
+<?php include "../src/ui/head.php" ?>
 <body class="app">
-<?php include "src/ui/header.php" ?>
+<?php include "../src/ui/header.php" ?>
 <div class="content">
     <div class="board__cards">
         <?php foreach ($data["cards"] as $card) { ?>
@@ -58,7 +58,8 @@
         </a>
     </aside>
 </div>
-<?php include "src/ui/footer.php" ?>
-<script defer rel="prefetch" type="application/javascript" src="/static/js/board.js"></script>
+<?php include "../src/ui/footer.php" ?>
+<script defer rel="prefetch" type="application/javascript" src="/public/static/js/calendar.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/public/static/js/board.js"></script>
 </body>
 </html>

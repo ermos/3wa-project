@@ -10,7 +10,12 @@
 <div class="content content--small">
 	<main class="main">
 		<form action="?p=create-room" method="post" class="block">
-			<h2 class="create-room__title">Créer une chambre</h2>
+			<h2 class="create-room__title">Poser une réservation</h2>
+            <div class="booking__info">
+                <h2 class="booking__title"><?= $data["room"]["name"] ?></h2>
+                <p class="booking__type"><?= $data["room"]["type"] ?></p>
+            </div>
+            <div id="booking-calendar"></div>
 			<label>
 				<input
 					class="input"
@@ -37,5 +42,10 @@
 	</main>
 </div>
 <?php include "../src/ui/footer.php" ?>
+<script type="application/javascript">
+    const booking = JSON.parse('<?= str_replace("\\\"", "\"", addslashes(json_encode($data["room"]["booking"], JSON_HEX_TAG))) ?>')
+</script>
+<script defer rel="prefetch" type="application/javascript" src="/public/static/js/calendar.js"></script>
+<script defer rel="prefetch" type="application/javascript" src="/public/static/js/booking.js"></script>
 </body>
 </html>

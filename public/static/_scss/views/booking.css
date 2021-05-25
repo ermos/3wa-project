@@ -1,0 +1,22 @@
+.booking__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing-medium) auto;
+}
+
+.booking__title {
+    font-weight: bold;
+    color: var(--neutral-color);
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.booking__type {
+    color: var(--sub-color-light-1);
+}
+
+#booking-calendar {
+    margin: var(--spacing-medium) auto;
+}

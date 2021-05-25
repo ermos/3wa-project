@@ -4,7 +4,7 @@
  */
 ?>
 <html>
-    <?php include "src/ui/head.php" ?>
+    <?php include "../src/ui/head.php" ?>
     <body>
         <div id="signin">
             <div class="signin__left" style="background-image: url('/static/images/background/<?= rand(1, 10) ?>.png')">

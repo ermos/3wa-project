@@ -3,15 +3,15 @@
 use core\Plugins;
 
 session_start();
-require_once "core/const.php";
-require_once "config/config.php";
+require_once "../core/const.php";
+require_once "../config/config.php";
 
 if (DEV_MODE) {
 	error_reporting(E_ALL);
 }
 
-require_once "core/library/library.Autoload.php";
-require_once "config/db.php";
+require_once "../core/autoload.php";
+require_once "../config/db.php";
 
 Plugins::init();
 
@@ -28,7 +28,7 @@ if (isset($_GET["api"])) {
 }
 
 $class_name = "controller\\$page";
-$path = "src/controller/class.$page.php";
+$path = "../src/controller/class.$page.php";
 
 define("CURRENT_PAGE", $page);
 
@@ -37,5 +37,5 @@ if(file_exists($path)) {
     $api ? (new $class_name)->api() : (new $class_name)->run();
 } else {
     $error = "404";
-    include "src/views/error.php";
+    include "../src/views/error.php";
 }
