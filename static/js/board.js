@@ -6,7 +6,6 @@ const roomAvailable = document.querySelector("#search-available")
 const roomDates   = document.querySelector("#search-date")
 const roomDateMin   = document.querySelector("#search-date-min")
 const roomDateMax   = document.querySelector("#search-date-max")
-const roomSubmit    = document.querySelector("#search-submit")
 const roomList      = document.querySelector("#room-list")
 
 xhr.withCredentials = true;
@@ -21,7 +20,15 @@ roomAvailable.addEventListener("change", (e) => {
     roomDates.style.display = e.target.value != "" ? "flex" : "none"
 })
 
-roomSubmit.addEventListener("click", () => {
+roomType.addEventListener("click", handleChange)
+roomAvailable.addEventListener("click", handleChange)
+roomDateMin.addEventListener("click", handleChange)
+roomDateMax.addEventListener("click", handleChange)
+
+xhr.open("GET", "/?api=home&method=room_list");
+xhr.send(data);
+
+function handleChange() {
     let queries = ""
     queries += roomType.value !== ""        ? "&type=" + roomType.value : ""
     queries += roomAvailable.value !== ""   ? "&available=" + roomAvailable.value : ""
@@ -30,10 +37,7 @@ roomSubmit.addEventListener("click", () => {
 
     xhr.open("GET", "/?api=home&method=room_list" + queries);
     xhr.send(data);
-})
-
-xhr.open("GET", "/?api=home&method=room_list");
-xhr.send(data);
+}
 
 function constructRoomList(data) {
     let result = ""
@@ -52,8 +56,11 @@ function constructRoomList(data) {
         result +=   '<img class="room-list__picture" src="' + e.picture + '" alt="' + e.name + '" />'
         result +=   '<div class="room-list__content">'
         result +=       '<div class="room-list__header">'
-        result +=           '<h3 class="room-list__title">' + e.name + '</h3>'
-        result +=           '<p class="room-list__type">' + e.type + '</p>'
+        result +=           '<div>'
+        result +=               '<h3 class="room-list__title">' + e.name + '</h3>'
+        result +=               '<p class="room-list__type">' + e.type + '</p>'
+        result +=           '</div>'
+        result +=           '<button class="btn btn--neutral room-list__btn" type="submit">Poser une réservation</button>'
         result +=       '</div>'
         result +=       '<div class="room-list__calendar">'
         for (let d = today(); d < afterDay; d.setDate(d.getDate() + 1)) {
@@ -62,12 +69,6 @@ function constructRoomList(data) {
             result +=       '</div>'
         }
         result +=               ''
-        result +=       '</div>'
-        result +=       '<div class="btn-group">'
-        result +=           '<a href="#">'
-        result +=               '<button class="btn btn--default">Voir la fiche</button>'
-        result +=           '</a>'
-        result +=           '<button class="btn btn--neutral" type="submit">Poser une réservation</button>'
         result +=       '</div>'
         result +=   '</div>'
         result += '</div>'

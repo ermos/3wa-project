@@ -9,6 +9,7 @@
 @import "_scss/toast.css";
 /* UI */
 @import "../src/ui/header.css";
+@import "../src/ui/footer.css";
 /* Views */
 @import "../src/views/se-connecter.css";
 @import "../src/views/board.css";

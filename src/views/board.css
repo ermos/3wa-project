@@ -96,15 +96,20 @@
 
 .room-list__item {
     display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .room-list__picture {
-    height: 150px;
+    max-width: 238px;
+    width: 100%;
+    height: auto;
 }
 
 .room-list__content {
     box-sizing: border-box;
     padding: 0 var(--spacing-little);
+    min-width: 200px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -112,16 +117,25 @@
 
 .room-list__header {
     flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .room-list__title {
     font-weight: bold;
     color: var(--neutral-color);
     font-size: 3rem;
+    line-height: 1;
 }
 
 .room-list__type {
     color: var(--sub-color-light-1);
+}
+
+.room-list__btn {
+    width: auto;
+    margin-top: 0;
 }
 
 .room-list__calendar {

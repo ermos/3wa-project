@@ -49,7 +49,6 @@
                         value="<?= $now ?>"
                 >
             </div>
-            <button id="search-submit" class="search__btn">Afficher</button>
         </div>
         <div id="room-list"></div>
     </main>
@@ -59,6 +58,7 @@
         </a>
     </aside>
 </div>
+<?php include "src/ui/footer.php" ?>
 <script defer rel="prefetch" type="application/javascript" src="/static/js/board.js"></script>
 </body>
 </html>

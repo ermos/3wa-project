@@ -36,5 +36,6 @@
 		</form>
 	</main>
 </div>
+<?php include "src/ui/footer.php" ?>
 </body>
 </html>
