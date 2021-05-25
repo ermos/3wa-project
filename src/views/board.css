@@ -123,3 +123,26 @@
 .room-list__type {
     color: var(--sub-color-light-1);
 }
+
+.room-list__calendar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar__item {
+    width: 30px;
+    height: 30px;
+    background-color: #c7c7c7;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 2.5px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.calendar__item--booking {
+    background-color: var(--green);
+}

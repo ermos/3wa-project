@@ -1,21 +1,21 @@
 /* Init */
-@use "_scss/reset.css";
-@use "_scss/default.css";
+@import "_scss/reset.css";
+@import "_scss/default.css";
 
 /* CSS Components */
-@use "_scss/btn.css";
-@use "_scss/input.css";
-@use "_scss/popup.css";
-@use "_scss/app.css";
-@use "_scss/toast.css";
+@import "_scss/btn.css";
+@import "_scss/input.css";
+@import "_scss/popup.css";
+@import "_scss/app.css";
+@import "_scss/toast.css";
 
 /* UI */
-@use "../src/ui/header.css";
+@import "../src/ui/header.css";
 
 /* Views */
-@use "../src/views/se-connecter.css";
-@use "../src/views/board.css";
-@use "../src/views/create-room.css";
+@import "../src/views/se-connecter.css";
+@import "../src/views/board.css";
+@import "../src/views/create-room.css";
 
 /* Default Variables */
 :root{

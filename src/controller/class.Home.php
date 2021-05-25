@@ -39,15 +39,15 @@ class Home extends Controller {
 			$value[] = isset($_GET["date-min"]) ? $_GET["date-min"] : date("Y-m-d");
 
 			if (isset($_GET["date-max"])) {
-				$date_max = "AND room_booking.date_max > ?";
+				$date_max = "OR room_booking.date_max > ?";
 				$value[] = $_GET["date-max"];
 			}
 
 			$r->Get()->Where($cond_type . "(
 			SELECT 1 FROM room_booking
 			WHERE room_booking.room_id = room.id
-			AND room_booking.date_min < ?
-			" . $date_max . ")", ...$value);
+			AND (room_booking.date_min < ?
+			" . $date_max . "))", ...$value);
 		}
 
 		if (isset($_GET["type"])) {
@@ -56,7 +56,14 @@ class Home extends Controller {
 
 		$result = $r->Get()->QueryRows();
 		foreach ($result as &$line) {
-			$line["booking"] = ORM::QueryRows("Booking", array(["room_id", "=", $line["id"]]));
+			$line["booking"] = ORM::QueryRows(
+				"Booking",
+				array(
+					["room_id", "=", $line["id"]],
+					["date_max", ">=", date("Y-m-d")],
+					["date_min", "<", date("Y-m-d", strtotime(date("Y-m-d") . " + 30 days"))]
+				)
+			);
 		}
 
 		Response::API(200, $result);
