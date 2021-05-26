@@ -7,10 +7,9 @@ use core\Response;
 
 class CreateRoom extends Controller {
 
-	public function api(){}
+	public function api(): void {}
 
-	public function run()
-	{
+	public function run(): void {
 		if (empty($_SESSION["user"])) {
 			header("Location: /");
 		}
@@ -26,7 +25,7 @@ class CreateRoom extends Controller {
 		]);
 	}
 
-	private function insertRoom() {
+	private function insertRoom(): string {
 		if (!isset($_POST["room_name"]) || !isset($_POST["room_type"])) {
 			return "Un des champs n'a pas été remplis";
 		}

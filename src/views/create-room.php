@@ -9,7 +9,7 @@
 <?php include "../src/ui/header.php" ?>
 <div class="content content--small">
 	<main class="main">
-		<form action="?p=create-room" method="post" class="block">
+		<form action="/create-room" method="post" class="block">
 			<h2 class="create-room__title">Créer une chambre</h2>
 			<label>
 				<input

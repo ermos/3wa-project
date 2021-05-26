@@ -1,5 +1,5 @@
 <?php
 
-function isTooBusyCard($card) {
+function isTooBusyCard($card): string {
 	return $card["free"] <= 5 ? "red" : ($card["free"] <= 10 ? "orange" : "green");
 }

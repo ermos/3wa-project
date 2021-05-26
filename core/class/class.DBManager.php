@@ -4,7 +4,7 @@ namespace core;
 class DBManager {
 
 	// Database Object
-	private $_database = null;
+	private ?\PDO $_database = null;
 
 	// Initialize Database.
 	public function __construct($db_name, $db_host, $db_user, $db_password) {
@@ -12,22 +12,22 @@ class DBManager {
 	}
 
 	// Begin method start a transaction.
-	public function Begin() {
+	public function Begin(): bool {
 		return $this->_database->beginTransaction();
 	}
 
 	// Commit method commit a transaction.
-	public function Commit() {
+	public function Commit(): bool {
 		return $this->_database->commit();
 	}
 
 	// Rollback method rollback a transaction.
-	public function Rollback() {
-		return $this->_database->commit();
+	public function Rollback(): bool {
+		return $this->_database->rollBack();
 	}
 
 	// Query method fetch only one row.
-	public function Query($query, ...$args) {
+	public function Query($query, ...$args): array|bool {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
@@ -35,14 +35,14 @@ class DBManager {
 	}
 
 	// QueryRows fetch many rows and returns them in a associative array.
-	public function QueryRows($query, ...$args) {
+	public function QueryRows($query, ...$args): array|bool {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-	public function Exec($query, ...$args) {
+	public function Exec($query, ...$args): bool {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
@@ -53,11 +53,11 @@ class DBManager {
 		return true;
 	}
 
-	public function Insert($query, ...$args) {
+	public function Insert($query, ...$args): string {
 		$stmt = $this->_database->prepare($query);
 		$stmt->execute([...$args]);
 
-		if ($stmt->errorInfo()[2] !== null && ENVIRONMENT === "dev") {
+		if ($stmt->errorInfo()[2] !== null && DEV_MODE) {
 			var_dump($stmt->errorInfo()[2]);
 		}
 

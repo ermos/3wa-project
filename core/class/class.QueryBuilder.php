@@ -37,8 +37,7 @@ class QueryBuilder {
 		return $this;
 	}
 
-	public function __construct(Model $model, array $search = [], ?int $limit = null, ?int $offset = null)
-	{
+	public function __construct(Model $model, array $search = [], ?int $limit = null, ?int $offset = null) {
 		$this->object = $model;
 		$this->search = $search;
 		$this->limit = $limit;
@@ -49,7 +48,7 @@ class QueryBuilder {
 		$this->generateConds();
 	}
 
-	private function extractFields() {
+	private function extractFields(): void {
 		foreach (array_keys(get_object_vars($this->object)) as $field) {
 			if ($field === "primary_key" || $field === "table") {
 				continue;
@@ -73,7 +72,7 @@ class QueryBuilder {
 		return $f;
 	}
 
-	private function generateRequestFields() {
+	private function generateRequestFields(): void {
 		foreach ($this->fields as $name => $field) {
 			$table = $this->object->table;
 			$field_name = $name;
@@ -105,7 +104,7 @@ class QueryBuilder {
 		}
 	}
 
-	private function addRequestJoin(string $current_table, string $field_name, object $relation) {
+	private function addRequestJoin(string $current_table, string $field_name, object $relation): void {
 		$this->request_joins[] = sprintf(
 			"JOIN %s ON %s.%s = %s.%s",
 			$relation->table,
@@ -119,7 +118,7 @@ class QueryBuilder {
 		}
 	}
 
-	private function generateConds() {
+	private function generateConds(): void {
 		foreach ($this->search as $value) {
 			if (count($value) !== 3) {
 				throw new \Exception("search condition need at least three index");
@@ -140,7 +139,7 @@ class QueryBuilder {
 		}
 	}
 
-	private function generateRequest() {
+	private function generateRequest(): void {
 		$this->request_string = "SELECT " . implode(",", $this->request_fields) . "\n";
 		$this->request_string .= "FROM " . $this->object->table . "\n";
 		if (count($this->request_joins) !== 0) {

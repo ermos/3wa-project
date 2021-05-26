@@ -22,7 +22,7 @@ class User extends Model {
 		$this->updated_at = DateFieldDefinition::Create();
 	}
 
-	public static function checkLogin($username, $password) {
+	public static function checkLogin($username, $password): string {
 		if (empty($username)) {
 			return "Nom d'utilisateur requis !";
 		}

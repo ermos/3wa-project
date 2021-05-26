@@ -3,8 +3,8 @@ namespace core;
 
 abstract class Controller {
 
-	abstract public function api();
+	abstract public function api(): void;
 
-    abstract public function run();
+    abstract public function run(): void;
 
 }

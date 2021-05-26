@@ -8,8 +8,7 @@ use model\User;
 
 class Home extends Controller {
 
-	public function api()
-	{
+	public function api(): void {
 		if ($_SERVER['REQUEST_METHOD'] !== "GET") {
 			Response::API(403, [ "message" => "only get request is allowed on this object" ]);
 			return;
@@ -29,7 +28,7 @@ class Home extends Controller {
 		}
 	}
 
-	private function room_list() {
+	private function room_list(): void {
 		$r = ORM::Prepare("Room");
 		if (isset($_GET["available"])) {
 			$value = [];
@@ -69,8 +68,7 @@ class Home extends Controller {
 		Response::API(200, $result);
 	}
 
-	public function run()
-    {
+	public function run(): void {
         if (empty($_SESSION["user"])) {
             $this->signIn();
             return;
@@ -79,7 +77,7 @@ class Home extends Controller {
         $this->board();
     }
 
-    private function signIn() {
+    private function signIn(): void {
         $error = "";
 
         if (!empty($_POST["username"]) || !empty($_POST["password"])) {
@@ -96,7 +94,7 @@ class Home extends Controller {
         ]);
     }
 
-    private function board() {
+    private function board(): void {
         Response::Show("board", [
         	"room_type" => ORM::QueryRows("RoomType"),
         	"cards" => ORM::QueryRows("Card"),

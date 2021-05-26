@@ -15,8 +15,7 @@ class Field {
 	private ?string $alias_name = null;
 	private ?string $alias_query = null;
 
-	public function __construct(int $type)
-	{
+	public function __construct(int $type) {
 		$this->type = $type;
 	}
 

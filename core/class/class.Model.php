@@ -7,8 +7,7 @@ abstract class Model {
 	public string|null $table = null;
 	private ?QueryBuilder $qb;
 
-	public function __construct()
-	{
+	public function __construct() {
 		if ($this->table === null) {
 			throw new \ErrorException("table name is required");
 		}
@@ -24,7 +23,7 @@ abstract class Model {
 		return $q->QueryRows();
 	}
 
-	public function Prepare(?array $conditions = [], ?int $limit = null, ?int $offset = null) {
+	public function Prepare(?array $conditions = [], ?int $limit = null, ?int $offset = null): void {
 		$this->qb = new QueryBuilder($this, $conditions, $limit, $offset);
 	}
 

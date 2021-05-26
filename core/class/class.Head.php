@@ -3,13 +3,13 @@ namespace core;
 
 class Head {
 
-    private static $title = APP_NAME;
+    private static string $title = APP_NAME;
 
-    public static function setTitle($title) {
+    public static function setTitle($title): void {
         self::$title = "$title - " . APP_NAME;
     }
 
-    public static function getTitle() {
+    public static function getTitle(): string {
         return self::$title;
     }
 

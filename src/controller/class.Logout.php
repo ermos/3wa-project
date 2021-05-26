@@ -6,9 +6,9 @@ use core\Response;
 
 class Logout extends Controller {
 
-	public function api(){}
+	public function api(): void {}
 
-    public function run() {
+    public function run(): void {
         unset($_SESSION["user"]);
         header('Location: /');
     }
