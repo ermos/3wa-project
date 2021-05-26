@@ -53,7 +53,7 @@
         <div id="room-list"></div>
     </main>
     <aside class="aside">
-        <a href="?p=create-room" class="block block--no-bg board__add-room">
+        <a href="/create-room" class="block block--no-bg board__add-room">
             <button class="btn btn--neutral add-room__btn">Ajouter une nouvelle chambre</button>
         </a>
     </aside>

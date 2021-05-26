@@ -6,7 +6,7 @@
 			<a <?= isActivePage("Home") ?> href="/">Accueil</a>
 <!--			<a --><?//= isActivePage("Planning") ?><!-- href="#">Planning</a>-->
 <!--			<a --><?//= isActivePage("Settings") ?><!-- href="#">Paramètres</a>-->
-			<a href="/?p=logout">Se déconnecter</a>
+			<a href="/logout">Se déconnecter</a>
 		</nav>
 	</div>
 </header>

@@ -51,7 +51,7 @@ function constructRoomList(data) {
         result +=               '<h3 class="room-list__title">' + e.name + '</h3>'
         result +=               '<p class="room-list__type">' + e.type + '</p>'
         result +=           '</div>'
-        result +=           '<a href="?p=booking&id=' + e.id + '">'
+        result +=           '<a href="/booking/' + e.id + '">'
         result +=               '<button class="btn btn--neutral room-list__btn" type="submit">Poser une réservation</button>'
         result +=           '</a>'
         result +=       '</div>'
