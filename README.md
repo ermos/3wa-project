@@ -5,30 +5,42 @@ Ce projet à été réalisé afin de valider le diplôme RNCP de la formation
 développeur web au sein de l'école numérique 3W Academy.
 
 L'application à été réaliser from scratch et sur une période assez courte,
-de plus aucun test unitaire ou d'audit à été effectuer.
-Elle est donc sûrement pourvus de bug ou de faille et
-n'est donc pas utilisable dans un environnement de production.
+de plus aucun test unitaire ou audit à été effectuer.
+Elle n'est donc pas utilisable dans un environnement de production en l'état actuel.
 
 En cas de réutilisation, à votre charge de faire le nécessaire.
 
-Vous trouverez une démo ici : ...
-
-Le nom d'utilisateur est `admin` et le mot de passe est `admin`.
-
-## Choix technique
-
-Je suis partie sur un modèle Vue/Controller simpliste,
-le point d'entré est le controller, qui va tout simplement fournir
-une vue avec un jeu de donnée. Afin d'ajouter un côté dynamique à
-l'interface avec javascript, j'ai ajouté la possibilité aux controllers
-de retourner du json, cela me permet de gérer toutes ma logique au même
-endroit.
-
-Pour la partie vue, c'est des pages php tout ce qu'il y à de plus basique,
-je n'ai pas utilisé de module de templating comme twig pour des raisons
-de performance,
-l'application étant assez légère, les vues reste très lisible. 
+Vous pouvez trouver une démo ici : https://hotelio.smiti.fr/
 
 # Pré-requis
 - PHP 8 (avec les extensions pdo et pdo-mysql)
 - MariaDB 10.5.7 (ou MySQL)
+- Nginx
+
+# Installation
+
+#### 1) Importer le projet
+
+```bash
+git clone git@github.com:ermos/hotelio.git
+cd hotelio
+```
+
+#### 1) Importer la base de donnée
+
+```bash
+cd docs
+mysql -h 127.0.0.1 -P 3306 -u root < database.sql
+```
+
+#### 2) Lancer docker-compose dans le dossier `deployments`
+
+```bash
+cd ../deployments
+docker-compose up -d
+```
+
+#### 3) Accéder à l'application
+
+Rendez-vous sur http://localhost:8300/ si vous n'avez pas changer le port dans le fichier `docker-compose`,
+si tout est OK, vous pouvez vous connecter avec les identifiants `admin`:`admin`.
